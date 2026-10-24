@@ -20,6 +20,7 @@ export default function App() {
     { id: 14, name: '5000 كوينز', price: 2900, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
     { id: 15, name: '10,000 كوينز', price: 3800, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
     { id: 16, name: '15,000 كوينز', price: 5400, category: 'coins', img: 'https://ibb.co/Qt6CTyK' }
+    
   ]);
   const [orders, setOrders] = useState([]);
   const [supportMessages, setSupportMessages] = useState([]);

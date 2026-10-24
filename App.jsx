@@ -8,10 +8,14 @@ export default function App() {
     { id: 2, name: 'حزمة ألكانتارا', price: 100, category: 'players' },
     { id: 3, name: 'حزمة كاسياس', price: 150, category: 'players' },
     { id: 4, name: 'حزمة كلوب / كونتي / مورينيو + 50 كوينز', price: 430, category: 'players' },
-    { id: 5, name: '100 كوينز', price: 80, category: 'coins' },
-    { id: 6, name: '500 كوينز', price: 350, category: 'coins' },
-    { id: 7, name: '1000 كوينز', price: 680, category: 'coins' },
-    { id: 8, name: '15,000 كوينز', price: 5400, category: 'coins' }
+    { id: 5, name: '100 كوينز', price: 80, category: 'coins'img: 'https://ibb.co/Qt6CTyK'
+    },
+    { id: 6, name: '500 كوينز', price: 350, category: 'coins'img: 'https://ibb.co/Qt6CTyK'
+    },
+    { id: 7, name: '1000 كوينز', price: 680, category: 'coins'img: 'https://ibb.co/Qt6CTyK'
+    },
+    { id: 8, name: '15,000 كوينز', price: 5400, category: 'coins'img: 'https://ibb.co/Qt6CTyK'
+    }
   ]);
   const [orders, setOrders] = useState([]);
   const [supportMessages, setSupportMessages] = useState([]);

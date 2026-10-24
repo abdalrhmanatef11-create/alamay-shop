@@ -10,16 +10,16 @@ export default function App() {
     { id: 4, name: 'حزمة كلوب + 50 كوينز', price: 430, category: 'coaches' },
     { id: 5, name: 'حزمة كونتي + 50 كوينز', price: 430, category: 'coaches' },
     { id: 6, name: 'حزمة مورينيو + 50 كوينز', price: 430, category: 'coaches' },
-    { id: 7, name: '100 كوينز', price: 80, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
-    { id: 8, name: '300 كوينز', price: 220, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
-    { id: 9, name: '500 كوينز', price: 350, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
-    { id: 10, name: '1000 كوينز', price: 680, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
-    { id: 11, name: '1500 كوينز', price: 950, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
-    { id: 12, name: '2000 كوينز', price: 1250, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
-    { id: 13, name: '3000 كوينز', price: 1800, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
-    { id: 14, name: '5000 كوينز', price: 2900, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
-    { id: 15, name: '10,000 كوينز', price: 3800, category: 'coins', img: 'https://ibb.co/Qt6CTyK' },
-    { id: 16, name: '15,000 كوينز', price: 5400, category: 'coins', img: 'https://ibb.co/Qt6CTyK' }
+    { id: 7, name: '100 كوينز', price: 80, category: 'coins' },
+    { id: 8, name: '300 كوينز', price: 220, category: 'coins' },
+    { id: 9, name: '500 كوينز', price: 350, category: 'coins' },
+    { id: 10, name: '1000 كوينز', price: 680, category: 'coins' },
+    { id: 11, name: '1500 كوينز', price: 950, category: 'coins' },
+    { id: 12, name: '2000 كوينز', price: 1250, category: 'coins' },
+    { id: 13, name: '3000 كوينز', price: 1800, category: 'coins' },
+    { id: 14, name: '5000 كوينز', price: 2900, category: 'coins' },
+    { id: 15, name: '10,000 كوينز', price: 3800, category: 'coins' },
+    { id: 16, name: '15,000 كوينز', price: 5400, category: 'coins' }
   ]);
   const [orders, setOrders] = useState([]);
   const [supportMessages, setSupportMessages] = useState([]);
@@ -49,7 +49,7 @@ export default function App() {
 
   const handleAddProduct = () => {
     if (!newProdName || !newProdPrice) return;
-    setProducts([...products, { id: Date.now(), name: newProdName, price: Number(newProdPrice), category: 'coins', img: 'https://ibb.co/Qt6CTyK' }]);
+    setProducts([...products, { id: Date.now(), name: newProdName, price: Number(newProdPrice), category: 'coins' }]);
     setNewProdName('');
     setNewProdPrice('');
     setNotice('تم إضافة المنتج بنجاح');
@@ -97,7 +97,6 @@ export default function App() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '15px' }}>
             {products.map(p => (
               <div key={p.id} style={{ background: '#fff', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-                {p.img && <img src={p.img} alt={p.name} style={{ width: '60px', height: '60px', objectFit: 'contain', marginBottom: '10px' }} />}
                 <h3 style={{ margin: '10px 0', fontSize: '18px' }}>{p.name}</h3>
                 <p style={{ color: '#e11d48', fontWeight: 'bold', fontSize: '16px' }}>{p.price} جنيه</p>
                 <button onClick={() => alert('تم اختيار المنتج بنجاح! تواصل مع الدعم لإتمام الشحن عبر فودافون كاش.')} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '8px 15px', borderRadius: '5px', cursor: 'pointer', width: '100%', marginTop: 'auto' }}>شحن الآن</button>

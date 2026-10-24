@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import supabase from './supabase.js';
 
 export default function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -21,9 +20,6 @@ export default function App() {
     { id: 15, name: '10,000 كوينز', price: 3800, category: 'coins' },
     { id: 16, name: '15,000 كوينز', price: 5400, category: 'coins' }
   ]);
-  const [orders, setOrders] = useState([]);
-  const [supportMessages, setSupportMessages] = useState([]);
-  const [newMsg, setNewMsg] = useState('');
   const [notice, setNotice] = useState('');
   const [newProdName, setNewProdName] = useState('');
   const [newProdPrice, setNewProdPrice] = useState('');
@@ -33,19 +29,7 @@ export default function App() {
     if (urlParams.get('admin') === 'true') {
       setIsAdmin(true);
     }
-    fetchData();
   }, []);
-
-  async function fetchData() {
-    try {
-      const { data: oData } = await supabase.from('orders').select('*');
-      if (oData) setOrders(oData);
-      const { data: mData } = await supabase.from('support_messages').select('*');
-      if (mData) setSupportMessages(mData);
-    } catch (e) {
-      console.log(e);
-    }
-  }
 
   const handleAddProduct = () => {
     if (!newProdName || !newProdPrice) return;
@@ -57,13 +41,6 @@ export default function App() {
 
   const handleDeleteProduct = (id) => {
     setProducts(products.filter(p => p.id !== id));
-  };
-
-  const handleGetSupport = async () => {
-    if (!newMsg) return;
-    await supabase.from('support_messages').insert([{ body: newMsg, sender: isAdmin ? 'Admin' : 'User' }]);
-    setNewMsg('');
-    fetchData();
   };
 
   return (
@@ -86,10 +63,6 @@ export default function App() {
             <input type="number" placeholder="السعر" value={newProdPrice} onChange={(e) => setNewProdPrice(e.target.value)} style={{ padding: '8px', margin: '5px', width: '100px' }} />
             <button onClick={handleAddProduct} style={{ background: '#10b981', color: '#fff', border: 'none', padding: '8px 15px', borderRadius: '5px', cursor: 'pointer' }}>إضافة</button>
           </div>
-          <h3>الطلبات الواردة</h3>
-          <ul>
-            {orders.map((o, i) => <li key={i}>{JSON.stringify(o)}</li>)}
-          </ul>
         </div>
       ) : (
         <div>
@@ -106,17 +79,6 @@ export default function App() {
           </div>
         </div>
       )}
-
-      <div style={{ marginTop: '40px', background: '#fff', padding: '15px', borderRadius: '8px' }}>
-        <h3>الدعم الفني والرسائل</h3>
-        <div style={{ maxHeight: '150px', overflowY: 'scroll', marginBottom: '10px', border: '1px solid #eee', padding: '10px' }}>
-          {supportMessages.map((m, idx) => (
-            <div key={idx} style={{ margin: '5px 0' }}><b>{m.sender}:</b> {m.body}</div>
-          ))}
-        </div>
-        <input type="text" placeholder="اكتب رسالتك للدعم..." value={newMsg} onChange={(e) => setNewMsg(e.target.value)} style={{ padding: '8px', width: '70%', marginLeft: '10px' }} />
-        <button onClick={handleGetSupport} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '8px 15px', borderRadius: '5px', cursor: 'pointer' }}>إرسال</button>
-      </div>
     </div>
   );
-}
+          }

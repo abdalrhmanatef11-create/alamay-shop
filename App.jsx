@@ -82,7 +82,7 @@ export default function App() {
           <h2>لوحة التحكم (الادمن)</h2>
           <div style={{ background: '#fff', padding: '15px', borderRadius: '8px', marginBottom: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
             <h3>إضافة منتج كوينز جديد</h3>
-            <input type="text" placeholder="اسم المنتج (مثال: 2000 كوينز)" value={newProdName} onChange={(e) => setNewProdName(e.target.value)} style={{ padding: '8px', margin: '5px', width: '200px' }} />
+            <input type="text" placeholder="اسم المنتج" value={newProdName} onChange={(e) => setNewProdName(e.target.value)} style={{ padding: '8px', margin: '5px', width: '200px' }} />
             <input type="number" placeholder="السعر" value={newProdPrice} onChange={(e) => setNewProdPrice(e.target.value)} style={{ padding: '8px', margin: '5px', width: '100px' }} />
             <button onClick={handleAddProduct} style={{ background: '#10b981', color: '#fff', border: 'none', padding: '8px 15px', borderRadius: '5px', cursor: 'pointer' }}>إضافة</button>
           </div>
@@ -120,4 +120,4 @@ export default function App() {
       </div>
     </div>
   );
-                                                                                 }
+}
